@@ -445,8 +445,17 @@ function getDetailQuestion(topic) {
   return detailQuestions[topic] || detailQuestions.unknown;
 }
 
+
+function clearActiveTapFocus() {
+  const active = document.activeElement;
+  if (active && typeof active.blur === "function" && active !== document.body) {
+    active.blur();
+  }
+}
+
 // Aktuelle Frage anzeigen.
 function renderQuestion() {
+  clearActiveTapFocus();
   isPartyWarning = false;
   const question = getCurrentQuestion();
   const progress = ((currentStep + 1) / TOTAL_STEPS) * 100;
@@ -489,6 +498,7 @@ function renderQuestion() {
 }
 
 function renderPartyWarning() {
+  clearActiveTapFocus();
   isPartyWarning = true;
   currentStep = 0;
   progressFill.style.width = `${(1 / TOTAL_STEPS) * 100}%`;
@@ -631,6 +641,7 @@ function selectPartyWarning(button) {
 
 // Ergebnis berechnen und nach dem Fokusmodus auf der normalen Webseite anzeigen.
 function showResult(forcedType = null) {
+  clearActiveTapFocus();
   progressFill.style.width = "100%";
   if (stepLabel) stepLabel.textContent = "";
   stepCounter.textContent = `${TOTAL_STEPS} / ${TOTAL_STEPS}`;

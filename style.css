@@ -4118,3 +4118,210 @@ body {
   }
 }
 
+
+
+/* =========================================================
+   Mobile-UX-Fix: Hero-Portrait, Check-Tap-Fokus, Anker-Offset
+   ---------------------------------------------------------
+   Nur responsive/UX. Inhalte und Check-Logik bleiben unverändert.
+   ========================================================= */
+
+html {
+  scroll-padding-top: calc(var(--header-height) + 24px);
+}
+
+section[id],
+#topics,
+#about,
+#check-teaser,
+#contact {
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+/* Der zweite Hero-CTA führt zu den Leistungen und soll weiterhin dezent bleiben. */
+.hero-actions .soft-link {
+  text-align: center;
+}
+
+/* Mobile Hero: Kevin sichtbar, aber kompakt und nicht störend. */
+@media (max-width: 980px) {
+  .hero-grid-hybrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero-person-card {
+    display: grid !important;
+    grid-template-columns: 86px minmax(0, 1fr);
+    align-items: center;
+    justify-self: start;
+    width: min(100%, 390px);
+    max-width: 390px;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 24px;
+    margin-top: 4px;
+  }
+
+  .hero-person-image {
+    border-radius: 18px;
+  }
+
+  .hero-person-image img {
+    width: 86px;
+    height: 86px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 50% 24%;
+  }
+
+  .hero-person-copy {
+    min-width: 0;
+    padding: 0 4px 0 0;
+  }
+
+  .hero-person-copy span {
+    margin-bottom: 5px;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+  }
+
+  .hero-person-copy strong {
+    font-size: 15px;
+    line-height: 1.28;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-person-card {
+    grid-template-columns: 74px minmax(0, 1fr);
+    width: min(100%, 340px);
+    padding: 9px;
+    gap: 10px;
+    border-radius: 22px;
+  }
+
+  .hero-person-image img {
+    width: 74px;
+    height: 74px;
+  }
+
+  .hero-person-copy strong {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero-person-card {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .hero-person-image img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Check: echter Auswahlzustand bleibt blau; Hover/Fokus wirkt nicht mehr wie Vorwahl. */
+.check-stage .answer-button:focus-visible:not(.is-selected) {
+  outline: none;
+  transform: none;
+  border-color: rgba(240, 187, 104, 0.72);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.078), rgba(255, 255, 255, 0.035)),
+    rgba(255, 255, 255, 0.045);
+  box-shadow: 0 0 0 3px rgba(240, 187, 104, 0.14);
+}
+
+.check-stage .answer-button:not(.is-selected) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .check-stage .answer-button:hover:not(.is-selected),
+  .check-stage .answer-button:focus:not(:focus-visible):not(.is-selected) {
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.14);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.078), rgba(255, 255, 255, 0.035)),
+      rgba(255, 255, 255, 0.045);
+    box-shadow: none;
+  }
+}
+
+/* Check-Buttons: lange deutsche Wörter sauber umbrechen, Microcopy auf normalen Phones anzeigen. */
+.check-stage .answer-text,
+.check-stage .answer-text strong,
+.check-stage .answer-text small {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.check-stage .answer-text strong {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.check-stage .answer-text small {
+  display: block;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .check-stage .answers-grid,
+  .check-stage .answer-count-6 .answers-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .check-stage .answer-button {
+    min-height: 72px;
+    padding: 11px 12px;
+  }
+
+  .check-stage .answer-text strong {
+    font-size: 15px;
+    line-height: 1.12;
+  }
+
+  .check-stage .answer-text small {
+    display: block;
+    font-size: 12px;
+    line-height: 1.22;
+  }
+}
+
+@media (max-width: 390px) {
+  .check-stage .answer-button {
+    min-height: 68px;
+    padding: 10px;
+  }
+
+  .check-stage .answer-text strong {
+    font-size: 14px;
+  }
+
+  .check-stage .answer-text small {
+    display: block;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 340px), (max-height: 610px) {
+  .check-stage .answer-text small {
+    display: none;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 341px) {
+  .check-stage .question-area {
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+
+  .check-stage .answer-text small {
+    display: block;
+    font-size: 11px;
+  }
+}
