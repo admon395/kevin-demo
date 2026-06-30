@@ -74,6 +74,7 @@ const referralStatus = document.getElementById("referralStatus");
 const referralName = document.getElementById("referralName");
 const referralNameWrap = document.getElementById("referralNameWrap");
 const referralSourceUrl = document.getElementById("referralSourceUrl");
+const formSubmitUrlField = document.getElementById("formSubmitUrlField");
 
 // Mobiles Menü öffnen/schließen.
 if (menuButton && mainNav) {
@@ -200,6 +201,7 @@ function initLogoFallbacks() {
 // Einfache Empfehlungslogik: freiwillig, ohne Tracking-System oder Datenbank.
 function initReferralFields() {
   if (referralSourceUrl) referralSourceUrl.value = window.location.href;
+  if (formSubmitUrlField) formSubmitUrlField.value = window.location.href;
 
   try {
     const params = new URLSearchParams(window.location.search);
@@ -223,6 +225,7 @@ function initReferralFields() {
     contactForm.addEventListener("reset", () => {
       window.setTimeout(() => {
         if (referralSourceUrl) referralSourceUrl.value = window.location.href;
+        if (formSubmitUrlField) formSubmitUrlField.value = window.location.href;
         updateReferralField();
       }, 0);
     });
@@ -1006,6 +1009,41 @@ function restartCheck() {
   startCheck();
 }
 
+function getFormSubmitAjaxUrl() {
+  const action = contactForm ? String(contactForm.action || "") : "";
+
+  if (!action) return "";
+  if (action.includes("/ajax/")) return action;
+
+  return action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
+}
+
+function formDataToJson(form) {
+  const data = {};
+  const formData = new FormData(form);
+
+  formData.forEach((value, key) => {
+    if (key in data) {
+      data[key] = Array.isArray(data[key]) ? data[key].concat(value) : [data[key], value];
+      return;
+    }
+
+    data[key] = value;
+  });
+
+  data._url = window.location.href;
+
+  return data;
+}
+
+function setSubmitButtonLoading(isLoading) {
+  const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+  if (!submitButton) return;
+
+  submitButton.disabled = isLoading;
+  submitButton.classList.toggle("is-loading", isLoading);
+}
+
 // Formular absenden: FormSubmit, Demo oder optional PHP.
 if (contactForm) {
   contactForm.addEventListener("submit", async (event) => {
@@ -1021,16 +1059,53 @@ if (contactForm) {
     }
 
     if (CONTACT_MODE === "formsubmit") {
+      event.preventDefault();
+
       if (window.location.protocol === "file:") {
-        event.preventDefault();
         formMessage.classList.add("error");
         formMessage.textContent = "Bitte teste das Formular über den Azure-Link. FormSubmit funktioniert nicht, wenn die HTML-Datei lokal geöffnet wird.";
         return;
       }
 
-      // Wichtig: Nicht per fetch senden und keine Demo-Meldung erzwingen.
-      // Das Formular darf jetzt normal an FormSubmit abgeschickt werden.
-      trackLeadRequest();
+      const ajaxUrl = getFormSubmitAjaxUrl();
+
+      if (!ajaxUrl || !ajaxUrl.startsWith("https://formsubmit.co/ajax/")) {
+        formMessage.classList.add("error");
+        formMessage.textContent = "Das Formular ist technisch nicht korrekt verbunden. Bitte prüfe die FormSubmit-Adresse.";
+        return;
+      }
+
+      if (formSubmitUrlField) formSubmitUrlField.value = window.location.href;
+
+      try {
+        setSubmitButtonLoading(true);
+
+        const response = await fetch(ajaxUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(formDataToJson(contactForm))
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok || data.success === false) {
+          throw new Error(data.message || "Die Anfrage konnte nicht gesendet werden.");
+        }
+
+        formMessage.classList.add("success");
+        formMessage.textContent = "Danke! Deine Anfrage wurde gesendet. Falls FormSubmit die Adresse noch nicht bestätigt hat, bitte die Bestätigungs-Mail prüfen.";
+        trackLeadRequest();
+        contactForm.reset();
+      } catch (error) {
+        formMessage.classList.add("error");
+        formMessage.textContent = error.message || "Es gab ein Problem beim Senden. Bitte versuche es über den Azure-Link erneut.";
+      } finally {
+        setSubmitButtonLoading(false);
+      }
+
       return;
     }
 
