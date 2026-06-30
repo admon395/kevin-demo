@@ -7,7 +7,7 @@
   <meta name="description" content="Kurzer, unverbindlicher Check für erste Orientierung rund um Sicherheit, Geld und Zukunft. Keine Produktempfehlung. Keine Beratung über diese Seite." />
 
   <!-- Die CSS-Datei steuert das komplette Aussehen der Seite. -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=mobile-hero-fix-20260630-2" />
 </head>
 <body>
   <!-- Kleine SVG-Icons werden hier unsichtbar definiert und später per <use> benutzt. Keine externe Library nötig. -->
@@ -81,7 +81,7 @@
           <p class="eyebrow">Finanzplanung. Absicherung. Zukunft.</p>
           <h1 id="heroTitle">Du verdienst mehr Klarheit über dein Geld.</h1>
           <p class="hero-text">
-            Alles wird teurer. Der kurze Check zeigt dir, auf welche Themen wir einen ehrlichen Blick werfen sollten: Ob es finanzielle Absicherung, Einkommen, Rente oder Vermögensaufbau ist.
+            Alles wird teurer. Zukunft passiert trotzdem. Der kurze Check zeigt dir, auf welche Themen wir einen ehrlichen Blick werfen sollten: Ob es finanzielle Absicherung, Einkommen, Rente oder Vermögensaufbau ist.
           </p>
           <div class="hero-actions">
             <button class="btn btn-primary btn-big" type="button" data-start-check>
@@ -279,7 +279,7 @@
             <div class="next-icon"><svg><use href="#icon-calendar"></use></svg></div>
             <div>
               <h3>Erstgespräch anfragen</h3>
-              <p>Schick eine kurze Anfrage. Ich melde mich.</p>
+              <p>Schick eine kurze Anfrage. Kevin meldet sich zur Terminabstimmung.</p>
             </div>
             <button class="btn btn-secondary" type="button" data-open-contact>
               Zum Formular
@@ -317,11 +317,10 @@
 
         </div>
 
-        <form class="contact-form reveal" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-          <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HIER_EINTRAGEN" />
-          <input type="hidden" name="subject" value="Neue Anfrage über Kevinregelt" />
-          <input type="hidden" name="from_name" value="Kevinregelt Kontaktformular" />
-          <input type="hidden" name="page_url" id="formSubmitUrlField" />
+        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/Zagorsak@dpc-gruppe.de" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Neue Anfrage über Kevinregelt" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
 
           <!-- Honeypot: Dieses Feld bleibt für echte Nutzer unsichtbar. Bots füllen es oft aus. -->
           <label class="hp-field" aria-hidden="true">
@@ -377,7 +376,7 @@
           <div class="form-row referral-name-row is-hidden" id="referralNameWrap">
             <label for="referralName">Von wem wurdest du empfohlen? optional</label>
             <input id="referralName" name="referral_name" type="text" autocomplete="off" placeholder="Vorname oder Name der Person" />
-            <p class="form-help">Hier helfe ich nur, die Empfehlung richtig zuzuordnen.</p>
+            <p class="form-help">Das hilft Kevin nur, die Empfehlung richtig zuzuordnen.</p>
           </div>
 
           <!-- Diese versteckten Felder werden per JavaScript mit den Antworten befüllt. -->
@@ -399,11 +398,11 @@
 
           <label class="checkbox-row">
             <input type="checkbox" name="contact_permission" required />
-            <span>Ich bin damit einverstanden, kontaktiert zu werden. *</span>
+            <span>Ich bin damit einverstanden, dass Kevin mich zur Terminvereinbarung kontaktieren darf. *</span>
           </label>
 
           <p class="privacy-mini">
-            Datenschutz kurz gesagt: Wenn du nach dem Check anfragst, werden deine Check-Antworten zusammen mit dem Formular an mich gesendet, damit er das Gespräch vorbereiten kann.
+            Datenschutz kurz gesagt: Wenn du nach dem Check anfragst, werden deine Check-Antworten zusammen mit dem Formular an Kevin gesendet, damit er das Gespräch vorbereiten kann.
             Dazu gehört auch deine ausgewählte Zurückhaltung im Check. Bei Direktkontakt ohne Check werden keine Check-Antworten übermittelt. Marketing-Tracking wird erst nach freiwilliger Zustimmung aktiviert.
           </p>
 
@@ -426,7 +425,7 @@
         </div>
 
         <div class="about-copy reveal">
-          <p class="eyebrow">Was macht meine Beratung aus?</p>
+          <p class="eyebrow">Wer bin ich?</p>
           <h2 id="aboutTitle">Gute Beratung sollte verständlich sein.</h2>
           <p>
             Niemand sollte das Gefühl haben, bei Finanzthemen den Überblick zu verlieren. Ich unterstütze dich dabei, das Wesentliche zu erkennen: verständlich, ohne Fachchinesisch und ohne Druck. Gemeinsam schaffen wir Klarheit, damit du Entscheidungen treffen kannst, die wirklich zu dir passen.
@@ -438,7 +437,7 @@
             </article>
             <article class="value-card">
               <h3>Planen</h3>
-              <p>Klare Ziele statt Bauchgefühl.</p>
+              <p>Klare Ziele statt Bauchgefühl allein.</p>
             </article>
             <article class="value-card">
               <h3>Zukunft sichern</h3>
@@ -542,7 +541,7 @@
 
       <div class="footer-legal">
         <h3>Direkt Kontakt</h3>
-        <p>Du möchtest keinen Check machen? Dann kannst du mir direkt eine Anfrage schicken.</p>
+        <p>Du möchtest keinen Check machen? Dann kannst du Kevin direkt eine Anfrage schicken.</p>
         <button class="footer-contact-button" type="button" data-direct-contact>Kontaktformular öffnen</button>
       </div>
     </div>
