@@ -1,0 +1,53 @@
+DATENSCHUTZ-CHECKLISTE VOR LIVEGANG
+====================================
+
+1. Verantwortlichen ersetzen
+- Kevin [Nachname]
+- Anschrift
+- E-Mail
+- Telefon
+- Vermittler-/Registrierungsdaten
+- Aufsichtsbehörde / Vermittlerregister
+
+2. Hosting prüfen
+- Hosting-Anbieter in Datenschutzerklärung eintragen
+- Vertrag zur Auftragsverarbeitung mit Hoster prüfen
+- Speicherdauer Server-Logs prüfen
+- SSL/HTTPS aktivieren
+
+3. Formular-Mailversand prüfen
+- contact.php: Empfängeradresse ersetzen
+- script.js: CONTACT_MODE von "demo" auf "php" ändern
+- Mailfunktion des Servers testen
+- Kein Versand sensibler Unterlagen über das Formular empfehlen
+
+4. Google Ads / Meta erst nach Consent aktivieren
+- script.js: GOOGLE_ADS_ID ersetzen
+- script.js: GOOGLE_CONVERSION_LABEL ersetzen
+- script.js: META_PIXEL_ID ersetzen
+- Vorher Consent-Banner testen: Ablehnen darf keine externen Marketing-Skripte laden.
+
+5. Datenschutztexte final prüfen lassen
+Diese Vorlage ist technisch und inhaltlich vorbereitet, ersetzt aber keine anwaltliche Prüfung.
+
+UPDATE V7:
+- Datenschutz liegt jetzt separat unter datenschutz.html.
+- Impressum liegt jetzt separat unter impressum.html.
+- Auf der Startseite sind keine langen Datenschutz-/Impressums-Sektionen mehr eingebaut.
+- Das Kontaktformular verlinkt die Datenschutzerklärung in einem neuen Tab, damit eingegebene Formulardaten nicht verloren gehen.
+
+
+UPDATE V7-A: CHECK-ANTWORTEN AN KEVIN
+- Die V7-Gestaltung bleibt erhalten.
+- Check-Antworten werden im Formular als versteckte Felder vorbereitet.
+- Bei Direktkontakt ohne Check werden diese Felder geleert.
+- Bei Kontakt nach Check werden die Antworten mit der Anfrage an Kevin übermittelt.
+- contact.php enthält die Check-Antworten in der E-Mail an Kevin.
+- In der Datenschutzerklärung ist diese Übermittlung ausdrücklich beschrieben.
+
+
+UPDATE V7-A2:
+- Wer-bin-ich-/Video-Bereich auf der Startseite ergänzt.
+- Standard ist ein selbst gehostetes MP4-Video unter assets/kevin-video.mp4.
+- Wenn später YouTube, Vimeo oder andere externe Videodienste genutzt werden, Datenschutzerklärung und Consent-Logik ergänzen.
+- Kevins echtes Foto kann durch Ersetzen von assets/kevin-portrait.png eingebunden werden.

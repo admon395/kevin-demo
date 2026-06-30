@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin | Orientierung für Sicherheit, Geld & Zukunft</title>
+  <meta name="description" content="Kurzer, unverbindlicher Check für erste Orientierung rund um Sicherheit, Geld und Zukunft. Keine Produktempfehlung. Keine Beratung über diese Seite." />
+
+  <!-- Die CSS-Datei steuert das komplette Aussehen der Seite. -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Kleine SVG-Icons werden hier unsichtbar definiert und später per <use> benutzt. Keine externe Library nötig. -->
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24">
+      <path d="M12 3l7 3v5c0 5-3.2 8.5-7 10-3.8-1.5-7-5-7-10V6l7-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      <path d="M9 12l2 2 4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24">
+      <path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" />
+      <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2" />
+    </symbol>
+    <symbol id="icon-question" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M9.8 9a2.4 2.4 0 0 1 4.6 1.1c0 2.2-2.4 2.1-2.4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <path d="M12 17.5h.01" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24">
+      <path d="M7 3v4M17 3v4M4 9h16M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24">
+      <path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+  </svg>
+
+  <!-- Header: Logo/Fallback, Navigation und Kontakt-CTA. -->
+  <header class="site-header" id="top">
+    <a class="brand brand-logo has-logo" href="#top" aria-label="Zur Startseite">
+      <img class="brand-logo-img" src="assets/kevin-logo.png" alt="Kevin Regelt Logo" data-logo-img />
+      <span class="brand-text-fallback" data-logo-fallback>
+        <span class="brand-name">K. Zagorsak</span>
+        <span class="brand-sub">Altersvorsorge &<br />Finanzplanung</span>
+      </span>
+    </a>
+
+    <button class="menu-button" id="menuButton" type="button" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" aria-label="Hauptnavigation">
+      <a href="#top">Start</a>
+      <a href="#check-teaser">Check</a>
+      <a href="#topics">Themen</a>
+      <a href="#about">Über mich</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <button class="nav-cta" type="button" data-direct-contact>Kontakt</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO: Hook zuerst. Der Check ist prominent, aber freiwillig. -->
+    <section class="hero section-hero hero-hybrid" aria-labelledby="heroTitle">
+      <div class="hero-overlay"></div>
+      <div class="container hero-grid hero-grid-hybrid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Finanzplanung. Absicherung. Zukunft.</p>
+          <h1 id="heroTitle">Du verdienst mehr Klarheit über dein Geld.</h1>
+          <p class="hero-text">
+            Alles wird teurer. Zukunft passiert trotzdem. Der kurze Check zeigt dir, auf welche Themen wir einen ehrlichen Blick werfen sollten: Ob es finanzielle Absicherung, Einkommen, Rente oder Vermögensaufbau ist.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-big" type="button" data-start-check>
+              60-Sekunden-Check starten
+              <svg><use href="#icon-arrow"></use></svg>
+            </button>
+            <a class="btn btn-ghost soft-link" href="#topics">Mehr über mich</a>
+          </div>
+          <p class="micro-note">Keine Empfehlung. Kein Verkauf. Erstmal nur Orientierung.</p>
+        </div>
+
+        <aside class="hero-person-card reveal" aria-label="Kevin kurz vorgestellt">
+          <div class="hero-person-image">
+            <img src="assets/kevin-portrait.png" alt="Kevin" />
+          </div>
+          <div class="hero-person-copy">
+            <span>Persönliche Einordnung</span>
+            <strong>Verständlich sortieren, bevor du entscheidest.</strong>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WARUM: Problem direkt unter dem Hero, ohne zu überladen. -->
+    <section class="section section-why" id="why" aria-labelledby="whyTitle">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Überfordert?</p>
+          <h2 id="whyTitle">Erstmal Klarheit.</h2>
+        </div>
+
+        <div class="why-grid">
+          <article class="info-card why-card reveal">
+            <span class="card-number">01</span>
+            <h3>Was betrifft dich wirklich?</h3>
+            <p>Nicht jedes Thema ist für jeden gleich wichtig.</p>
+          </article>
+          <article class="info-card why-card reveal">
+            <span class="card-number">02</span>
+            <h3>Was verdient einen Blick?</h3>
+            <p>Absicherung, Rente, Einkommen oder Vermögensaufbau.</p>
+          </article>
+          <article class="info-card why-card reveal">
+            <span class="card-number">03</span>
+            <h3>Und dann?</h3>
+            <p>Gemeinsam setzen wir um, was zu dir passt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEVIN-BRÜCKE: Früh Vertrauen aufbauen, ohne die Hook zu verdrängen. -->
+    <section class="section section-kevin-bridge" id="kevin-bridge" aria-labelledby="kevinBridgeTitle">
+      <div class="container kevin-bridge-grid">
+        <div class="kevin-bridge-copy reveal">
+          <p class="eyebrow">Persönliche Lösung</p>
+          <h2 id="kevinBridgeTitle">Ich helfe dir, Finanzthemen verständlich zu sortieren.</h2>
+          <p>
+            Nicht jeder braucht sofort eine Lösung. Manchmal braucht man zuerst jemanden, der die richtigen Fragen stellt.
+            Ich begleite Menschen bei Absicherung, Vorsorge, Finanzplanung und Vermögensaufbau, persönlich und ohne Druck.
+          </p>
+          <div class="bridge-actions">
+            <a class="btn btn-secondary" href="#about">Mich kennenlernen</a>
+            <button class="btn btn-ghost" type="button" data-start-check>Mit dem Check starten</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECK: smarter Einstieg, kein Zwang. -->
+    <section class="section section-focus" id="check-teaser" aria-labelledby="focusTitle">
+      <div class="container focus-grid">
+        <div class="focus-copy reveal">
+          <p class="eyebrow">Wenn du nicht weißt, wo du anfangen sollst</p>
+          <h2 id="focusTitle">Mach den kurzen Check und finde heraus, welche Themen gerade relevant sein könnten.</h2>
+          <p>
+            5 Fragen. Ein erstes Fazit. Danach entscheidest du selbst, ob du mit mir sprechen möchtest.
+          </p>
+        </div>
+
+        <div class="focus-card focus-card-clean reveal">
+          <div class="focus-card-main">
+            <div class="focus-icon"><svg><use href="#icon-shield"></use></svg></div>
+            <div class="focus-card-text">
+              <span class="focus-card-kicker">Freiwilliger Einstieg</span>
+              <h3>60 Sekunden für mehr Klarheit.</h3>
+              <div class="focus-mini-facts" aria-label="Check kurz erklärt">
+                <span>60 Sekunden</span>
+                <span>kein Verkauf</span>
+                <span>keine Produktempfehlung</span>
+                <span>freiwillig</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="focus-actions-inline">
+            <button class="btn btn-primary" type="button" data-start-check>
+              Check starten
+              <svg><use href="#icon-arrow"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THEMEN: Leistungen bewusst tiefer unten, als mögliche Gesprächsfelder. -->
+    <section class="section section-topics" id="topics" aria-labelledby="topicsTitle">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Themen</p>
+          <h2 id="topicsTitle">Wobei ich unterstützen kann</h2>
+          <p>
+            Mein kostenloses Beratungsportfolio
+          </p>
+        </div>
+
+        <div class="topics-grid">
+          <article class="topic-card reveal">
+            <h3>Private Altersvorsorge</h3>
+            <p>Damit später nicht alles vom Zufall abhängt.</p>
+          </article>
+          <article class="topic-card reveal">
+            <h3>Berufsunfähigkeit / Einkommensschutz</h3>
+            <p>Wenn Arbeit und Einkommen plötzlich wegbricht.</p>
+          </article>
+          <article class="topic-card reveal">
+            <h3>Private Krankenversicherung</h3>
+            <p>Schutz für deine Gesundheit.</p>
+          </article>
+          <article class="topic-card reveal">
+            <h3>Kapitalanlage / Vermögensaufbau </h3>
+            <p>Wenn Sparen allein nicht mehr reicht.</p>
+          </article>
+          <article class="topic-card reveal">
+            <h3>Immobilien & Finanzierung</h3>
+            <p>Wenn Eigentum, Darlehen oder Absicherung eine Rolle spielen.</p>
+          </article>
+          <article class="topic-card reveal">
+            <h3>Familie & Risikoschutz</h3>
+            <p>Wenn andere Menschen mit an deiner Sicherheit hängen.</p>
+          </article>
+          <article class="topic-card reveal">
+            <h3>Kranken- & Pflegevorsorge</h3>
+            <p>Für Situationen, die man ungern plant, aber nicht ignorieren sollte.</p>
+          </article>
+          <article class="topic-card reveal">
+            <h3>Finanzplanung</h3>
+            <p>Einmal sortieren, was wichtig ist und was warten kann.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERGEBNIS / FAZIT: Anfangs komplett versteckt. Wird erst nach Abschluss des Checks eingeblendet. -->
+    <section class="result-section is-hidden" id="result" aria-label="Dein erstes Fazit">
+      <div class="result-bg"></div>
+      <div class="container result-wrap">
+        <div class="portrait-card result-pointer-card reveal">
+          <img src="assets/kevin-result-pointer.png" alt="Kevin zeigt auf dein Fazit" />
+        </div>
+
+        <div class="result-content reveal">
+          <p class="eyebrow gold">Dein erstes Fazit</p>
+          <div class="result-text" id="resultText">
+            <!-- Der Inhalt wird per JavaScript passend zu den Antworten eingesetzt. -->
+          </div>
+
+          <div class="result-actions">
+            <button class="btn btn-primary btn-big" type="button" id="openContactButton">
+              Kostenlos Termin vereinbaren
+              <svg><use href="#icon-calendar"></use></svg>
+            </button>
+            <button class="btn btn-ghost" type="button" id="restartButton">Check neu starten</button>
+          </div>
+
+          <div class="trust-row" aria-label="Vorteile">
+            <span><svg><use href="#icon-check"></use></svg> unverbindlich</span>
+            <span><svg><use href="#icon-check"></use></svg> persönlich</span>
+            <span><svg><use href="#icon-check"></use></svg> ohne Produktdruck</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nächster Schritt: Karten unter dem Fazit. Anfangs ebenfalls versteckt. -->
+    <section class="section next-section is-hidden" id="nextSteps" aria-labelledby="nextTitle">
+      <div class="container">
+        <div class="section-heading compact reveal">
+          <p class="eyebrow">Nächster Schritt</p>
+          <h2 id="nextTitle">Du entscheidest, wie weit du gehen willst.</h2>
+        </div>
+
+        <div class="next-grid">
+          <article class="next-card reveal">
+            <div class="next-icon"><svg><use href="#icon-calendar"></use></svg></div>
+            <div>
+              <h3>Erstgespräch anfragen</h3>
+              <p>Schick eine kurze Anfrage. Kevin meldet sich zur Terminabstimmung.</p>
+            </div>
+            <button class="btn btn-secondary" type="button" data-open-contact>
+              Zum Formular
+              <svg><use href="#icon-arrow"></use></svg>
+            </button>
+          </article>
+
+          <article class="next-card video-card reveal">
+            <div class="video-thumb">
+              <img src="assets/kevin-portrait.png" alt="Kevin Video Vorschau" />
+              <span class="play-bubble"><svg><use href="#icon-play"></use></svg></span>
+            </div>
+            <div>
+              <h3>45 Sekunden über mich</h3>
+              <p>Hier kann später ein kurzes Vorstellungs­video eingebunden werden.</p>
+            </div>
+            <button class="btn btn-secondary" type="button" id="videoButton" data-open-video>
+              Video ansehen
+              <svg><use href="#icon-arrow"></use></svg>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKTFORMULAR: Anfangs versteckt. Öffnet sich erst nach Klick auf den Fazit-CTA. -->
+    <section class="section contact-section is-hidden" id="contact" aria-labelledby="contactTitle">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Kostenloses Erstgespräch</p>
+          <h2 id="contactTitle">Schreib mir einfach was dir wichtig ist.</h2>
+          <p id="contactIntro">
+            Die Anfrage ist keine Beratung und keine Kaufentscheidung. 
+          </p>
+
+          <div class="disclaimer-box">
+            <strong>Wichtiger Hinweis</strong>
+            <p>
+              Diese Seite ersetzt keine Finanz- oder Versicherungsberatung. Es werden keine konkreten Produkte empfohlen.
+              Eine individuelle Beratung erfolgt erst im persönlichen Gespräch.
+            </p>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/chalakutta@hotmail.de" method="post" novalidate>
+          <input type="hidden" name="_subject" value="Neue Anfrage über Kevinregelt" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+
+          <!-- Honeypot: Dieses Feld bleibt für echte Nutzer unsichtbar. Bots füllen es oft aus. -->
+          <label class="hp-field" aria-hidden="true">
+            Bitte leer lassen
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
+
+          <div class="form-row">
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required />
+          </div>
+
+          <div class="form-row">
+            <label for="email">E-Mail *</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@mail.de" required />
+          </div>
+
+          <div class="form-row two-cols">
+            <div>
+              <label for="phone">Telefon *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Deine Telefonnummer" required />
+            </div>
+            <div>
+              <label for="zip">PLZ *</label>
+              <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="z. B. 50321" maxlength="5" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="contactWish">Wie möchtest du kontaktiert werden? *</label>
+            <select id="contactWish" name="contact_wish" required>
+              <option value="">Bitte auswählen</option>
+              <option value="E-Mail">E-Mail</option>
+              <option value="Telefon">Telefon</option>
+              <option value="WhatsApp">WhatsApp</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Worum geht es grob? optional</label>
+            <textarea id="message" name="message" rows="4" placeholder="Zum Beispiel: Überblick, Familie, Einkommen, Zukunft, Selbstständigkeit ..."></textarea>
+          </div>
+
+          <div class="form-row referral-row">
+            <label for="referralStatus">Wurdest du von jemandem empfohlen?</label>
+            <select id="referralStatus" name="referral_status">
+              <option value="">Bitte auswählen</option>
+              <option value="Ja">Ja</option>
+              <option value="Nein">Nein</option>
+            </select>
+          </div>
+
+          <div class="form-row referral-name-row is-hidden" id="referralNameWrap">
+            <label for="referralName">Von wem wurdest du empfohlen? optional</label>
+            <input id="referralName" name="referral_name" type="text" autocomplete="off" placeholder="Vorname oder Name der Person" />
+            <p class="form-help">Das hilft Kevin nur, die Empfehlung richtig zuzuordnen.</p>
+          </div>
+
+          <!-- Diese versteckten Felder werden per JavaScript mit den Antworten befüllt. -->
+          <input type="hidden" name="answer_life" id="answerLife" />
+          <input type="hidden" name="answer_topic" id="answerTopic" />
+          <input type="hidden" name="answer_detail" id="answerDetail" />
+          <input type="hidden" name="answer_barrier" id="answerBarrier" />
+          <input type="hidden" name="answer_channel" id="answerChannel" />
+          <input type="hidden" name="result_type" id="resultTypeField" />
+          <textarea name="check_summary" id="checkSummaryField" hidden></textarea>
+          <input type="hidden" name="request_source" id="requestSourceField" value="Direktkontakt" />
+          <input type="hidden" name="referral_source_url" id="referralSourceUrl" />
+          <input type="hidden" name="consent_text" id="consentTextField" value="Datenschutzerklärung gelesen und Kontaktaufnahme zur Terminvereinbarung erlaubt." />
+
+          <label class="checkbox-row">
+            <input type="checkbox" name="privacy" required />
+            <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen. *</span>
+          </label>
+
+          <label class="checkbox-row">
+            <input type="checkbox" name="contact_permission" required />
+            <span>Ich bin damit einverstanden, dass Kevin mich zur Terminvereinbarung kontaktieren darf. *</span>
+          </label>
+
+          <p class="privacy-mini">
+            Datenschutz kurz gesagt: Wenn du nach dem Check anfragst, werden deine Check-Antworten zusammen mit dem Formular an Kevin gesendet, damit er das Gespräch vorbereiten kann.
+            Dazu gehört auch deine ausgewählte Zurückhaltung im Check. Bei Direktkontakt ohne Check werden keine Check-Antworten übermittelt. Marketing-Tracking wird erst nach freiwilliger Zustimmung aktiviert.
+          </p>
+
+          <button class="btn btn-primary btn-wide" type="submit">
+            Anfrage absenden
+            <svg><use href="#icon-arrow"></use></svg>
+          </button>
+
+          <p class="form-message" id="formMessage" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- Über-Kevin-Sektion: ausführlicher, aber sauber gegliedert. -->
+    <section class="section about-section about-section-expanded" id="about" aria-labelledby="aboutTitle">
+      <div class="container about-grid about-grid-enhanced">
+        <div class="about-image reveal">
+          <img src="assets/kevin-portrait.png" alt="Kevin" />
+        </div>
+
+        <div class="about-copy reveal">
+          <p class="eyebrow">Wer bin ich?</p>
+          <h2 id="aboutTitle">Gute Beratung sollte verständlich sein.</h2>
+          <p>
+            Niemand sollte das Gefühl haben, bei Finanzthemen den Überblick zu verlieren. Ich unterstütze dich dabei, das Wesentliche zu erkennen: verständlich, ohne Fachchinesisch und ohne Druck. Gemeinsam schaffen wir Klarheit, damit du Entscheidungen treffen kannst, die wirklich zu dir passen.
+          </p>
+<div class="values-grid" aria-label="Meine Arbeitsweise">
+            <article class="value-card">
+              <h3>Beraten</h3>
+              <p>Erst verstehen, dann einordnen.</p>
+            </article>
+            <article class="value-card">
+              <h3>Planen</h3>
+              <p>Klare Ziele statt Bauchgefühl allein.</p>
+            </article>
+            <article class="value-card">
+              <h3>Zukunft sichern</h3>
+              <p>Schritt für Schritt, passend zu deinem Leben.</p>
+            </article>
+          </div>
+
+          <div class="trust-row about-trust" aria-label="Vertrauenspunkte">
+            <span><svg><use href="#icon-check"></use></svg> persönliche Beratung</span>
+            <span><svg><use href="#icon-check"></use></svg> verständliche Sprache</span>
+            <span><svg><use href="#icon-check"></use></svg> individuelle Lösungen</span>
+            <span><svg><use href="#icon-check"></use></svg> langfristige Begleitung</span>
+          </div>
+
+          <div class="about-video-panel">
+            <button class="about-video-preview" type="button" data-open-video aria-label="Mein kurzes Vorstellungsvideo ansehen">
+              <img src="assets/kevin-portrait.png" alt="Vorschau auf mein Vorstellungsvideo" />
+              <span class="play-bubble"><svg><use href="#icon-play"></use></svg></span>
+            </button>
+            <div class="about-video-copy">
+              <span class="mini-eyebrow">Kurz kennenlernen</span>
+              <h3>45 Sekunden über mich</h3>
+              <p>Wer ich bin, wie ich arbeite und warum mir echte Orientierung wichtiger ist als Druck.</p>
+              <button class="mini-video-button" type="button" data-open-video>Video ansehen</button>
+            </div>
+          </div>
+
+          <div class="about-actions">
+            <button class="btn btn-secondary" type="button" data-start-check>
+              Check starten
+              <svg><use href="#icon-arrow"></use></svg>
+            </button>
+            <button class="btn btn-ghost" type="button" data-direct-contact>Direkt Kontakt</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rechtliches liegt bewusst nicht mehr als langer Scroll-Bereich auf der Startseite. -->
+
+  </main>
+
+  <!-- CHECK-FOKUSMODUS: eigener Vollbild-Ort. Keine normale Webseiten-Sektion, kein Scroll-Funnel. -->
+  <div class="check-overlay is-hidden" id="checkOverlay" aria-hidden="true" role="dialog" aria-label="Orientierungs-Check">
+    <div class="check-backdrop" aria-hidden="true"></div>
+
+    <div class="check-stage" id="funnelShell" aria-live="polite">
+      <div class="check-stage-header">
+        <div class="check-title-block">
+          
+          <span class="check-subtitle">Orientierungs-Check</span>
+        </div>
+        <div class="check-header-actions">
+          <button class="check-back" id="checkBackButton" type="button" aria-label="Eine Frage zurück" disabled>← Zurück</button>
+          <button class="check-close" id="checkCloseButton" type="button" aria-label="Check schließen">×</button>
+        </div>
+      </div>
+
+      <div class="funnel-topline">
+        <span id="stepCounter">1 / 5</span>
+      </div>
+
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div id="questionArea" class="question-area">
+        <!-- Die Fragen werden per JavaScript eingesetzt. -->
+      </div>
+
+      <p class="privacy-line">
+        <svg><use href="#icon-lock"></use></svg>
+        Lokal ausgewertet. Keine automatische Speicherung.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- Footer mit Pflichtbereichen als Platzhalter. Für echte Veröffentlichung rechtlich prüfen lassen. -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand brand-logo has-logo" href="#top" aria-label="Zur Startseite">
+          <img class="brand-logo-img" src="assets/kevin-logo-full.png" alt="Kevin Regelt Logo" data-logo-img />
+          <span class="brand-text-fallback" data-logo-fallback>
+            <span class="brand-name">K. Zagorsak</span>
+            <span class="brand-sub">Altersvorsorge & Finanzplanung</span>
+          </span>
+        </a>
+        <p>
+          Orientierung rund um Sicherheit, Geld und Zukunft. Keine Produktempfehlung über diese Seite.
+        </p>
+      </div>
+
+      <div class="footer-legal">
+        <h3>Rechtliches</h3>
+        <p><a href="datenschutz.html">Datenschutzerklärung</a></p>
+        <p><a href="impressum.html">Impressum</a></p>
+        <p><button class="footer-link-button" type="button" data-open-consent>Cookie-/Tracking-Einstellungen</button></p>
+      </div>
+
+      <div class="footer-legal">
+        <h3>Direkt Kontakt</h3>
+        <p>Du möchtest keinen Check machen? Dann kannst du Kevin direkt eine Anfrage schicken.</p>
+        <button class="footer-contact-button" type="button" data-direct-contact>Kontaktformular öffnen</button>
+      </div>
+    </div>
+
+    <div class="container legal-bottom">
+      <p>
+        Hinweis: Diese Seite ersetzt keine Finanz- oder Versicherungsberatung. Es werden keine konkreten Finanz-, Versicherungs- oder Anlageprodukte empfohlen oder vermittelt. Eine individuelle Beratung erfolgt ausschließlich durch Kevin.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Video-Modal.
+       Wenn Kevins echtes Video da ist: Datei als assets/kevin-video.mp4 ablegen.
+       Das Modal nutzt keine externe Plattform und ist damit datenschutzfreundlicher als YouTube/Vimeo. -->
+  <div class="modal is-hidden" id="videoModal" aria-hidden="true" role="dialog" aria-labelledby="videoModalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card video-modal-card">
+      <button class="modal-close" type="button" data-close-modal aria-label="Video-Fenster schließen">×</button>
+      <p class="eyebrow">Kurz kennenlernen</p>
+      <h2 id="videoModalTitle">45 Sekunden über mich</h2>
+      <p>
+        Hier kann mein echtes Vorstellungs­video laufen: kurz, persönlich und ohne Verkaufsdruck.
+      </p>
+
+      <div class="video-frame">
+        <video id="kevinVideo" class="video-player" controls playsinline preload="metadata" poster="assets/kevin-portrait.png">
+          <source src="assets/kevin-video.mp4" type="video/mp4" />
+          Dein Browser kann dieses Video leider nicht abspielen.
+        </video>
+        <div class="video-fallback-note">
+          <svg><use href="#icon-play"></use></svg>
+          <span>Lege später die Datei <strong>kevin-video.mp4</strong> in den Ordner <strong>assets</strong>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Consent-Banner: Marketing ist standardmäßig AUS und wird erst nach aktiver Zustimmung geladen. -->
+  <div class="consent-banner is-hidden" id="consentBanner" role="dialog" aria-labelledby="consentTitle" aria-live="polite">
+    <div class="consent-content">
+      <div>
+        <p class="consent-kicker">Datenschutz-Einstellungen</p>
+        <h2 id="consentTitle">Dürfen wir Marketing messen?</h2>
+        <p>
+          Notwendige Technik läuft immer. Google Ads und Meta/Facebook/Instagram-Tracking werden nur geladen,
+          wenn du aktiv zustimmst. Du kannst deine Auswahl jederzeit ändern.
+        </p>
+      </div>
+      <div class="consent-actions">
+        <button class="btn btn-ghost" type="button" id="rejectCookies">Ablehnen</button>
+        <button class="btn btn-secondary" type="button" id="openConsentSettings">Auswahl</button>
+        <button class="btn btn-primary" type="button" id="acceptCookies">Alle akzeptieren</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal is-hidden" id="consentModal" aria-hidden="true" role="dialog" aria-labelledby="consentModalTitle">
+    <div class="modal-backdrop" data-close-consent></div>
+    <div class="modal-card consent-modal-card">
+      <button class="modal-close" type="button" data-close-consent aria-label="Datenschutz-Einstellungen schließen">×</button>
+      <p class="eyebrow">Privatsphäre</p>
+      <h2 id="consentModalTitle">Cookie- & Tracking-Einstellungen</h2>
+      <p>Du entscheidest, ob Marketing-Dienste geladen werden. Notwendige Funktionen sind für den Betrieb der Webseite erforderlich.</p>
+
+      <div class="consent-option locked">
+        <div>
+          <strong>Notwendig</strong>
+          <span>Seitendarstellung, Formularschutz, Consent-Speicherung.</span>
+        </div>
+        <span class="status-pill">immer aktiv</span>
+      </div>
+
+      <label class="consent-option">
+        <div>
+          <strong>Marketing & Conversion-Messung</strong>
+          <span>Google Ads und Meta Pixel, erst nach Zustimmung und nur wenn IDs hinterlegt sind.</span>
+        </div>
+        <input type="checkbox" id="marketingConsent" />
+      </label>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" type="button" id="saveRejectCookies">Ablehnen</button>
+        <button class="btn btn-primary" type="button" id="saveConsentSettings">Auswahl speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Die JavaScript-Datei steuert Funnel, Ergebnis, Formular und kleine Animationen. -->
+  <script src="script.js"></script>
+</body>
+</html>
