@@ -317,11 +317,11 @@
 
         </div>
 
-        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/zagorsak@dpc-gruppe.de" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="Neue Anfrage über Kevinregelt" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_url" id="formSubmitUrlField" />
+        <form class="contact-form reveal" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HIER_EINTRAGEN" />
+          <input type="hidden" name="subject" value="Neue Anfrage über Kevinregelt" />
+          <input type="hidden" name="from_name" value="Kevinregelt Kontaktformular" />
+          <input type="hidden" name="page_url" id="formSubmitUrlField" />
 
           <!-- Honeypot: Dieses Feld bleibt für echte Nutzer unsichtbar. Bots füllen es oft aus. -->
           <label class="hp-field" aria-hidden="true">

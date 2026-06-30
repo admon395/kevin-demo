@@ -11,10 +11,11 @@
 */
 
 // Kontaktmodus:
-// "formsubmit" = Formular wird normal an FormSubmit abgeschickt.
+// "web3forms"  = Formular wird normal an Web3Forms abgeschickt.
+// "formsubmit" = alte FormSubmit-Variante, nicht mehr für die Live-Demo genutzt.
 // "demo"       = Formular zeigt lokal nur Erfolgsmeldung.
 // "php"        = Formular sendet per fetch() an contact.php, wenn die Seite auf einem PHP-Server liegt.
-const CONTACT_MODE = "formsubmit";
+const CONTACT_MODE = "web3forms";
 
 // Datenschutz/Consent:
 // Solange hier Platzhalter stehen, werden keine externen Marketing-Skripte geladen.
@@ -1058,54 +1059,45 @@ if (contactForm) {
       return;
     }
 
-    if (CONTACT_MODE === "formsubmit") {
-      event.preventDefault();
-
+    if (CONTACT_MODE === "web3forms") {
       if (window.location.protocol === "file:") {
+        event.preventDefault();
         formMessage.classList.add("error");
-        formMessage.textContent = "Bitte teste das Formular über den Azure-Link. FormSubmit funktioniert nicht, wenn die HTML-Datei lokal geöffnet wird.";
+        formMessage.textContent = "Bitte teste das Formular über den Azure-Link. Der Live-Versand funktioniert nicht sauber, wenn die HTML-Datei lokal geöffnet wird.";
         return;
       }
 
-      const ajaxUrl = getFormSubmitAjaxUrl();
+      const accessKeyField = contactForm.querySelector('input[name="access_key"]');
+      const accessKey = accessKeyField ? String(accessKeyField.value || "").trim() : "";
 
-      if (!ajaxUrl || !ajaxUrl.startsWith("https://formsubmit.co/ajax/")) {
+      if (!accessKey || accessKey.includes("WEB3FORMS_ACCESS_KEY")) {
+        event.preventDefault();
         formMessage.classList.add("error");
-        formMessage.textContent = "Das Formular ist technisch nicht korrekt verbunden. Bitte prüfe die FormSubmit-Adresse.";
+        formMessage.textContent = "Bitte trage zuerst den Web3Forms Access Key in der index.html ein.";
         return;
       }
 
       if (formSubmitUrlField) formSubmitUrlField.value = window.location.href;
 
-      try {
-        setSubmitButtonLoading(true);
+      // Wichtig: Kein fetch(), kein AJAX, kein CORS-Risiko.
+      // Das Formular wird als normales HTML-POST an Web3Forms abgeschickt.
+      trackLeadRequest();
+      return;
+    }
 
-        const response = await fetch(ajaxUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(formDataToJson(contactForm))
-        });
-
-        const data = await response.json().catch(() => ({}));
-
-        if (!response.ok || data.success === false) {
-          throw new Error(data.message || "Die Anfrage konnte nicht gesendet werden.");
-        }
-
-        formMessage.classList.add("success");
-        formMessage.textContent = "Danke! Deine Anfrage wurde gesendet. Falls FormSubmit die Adresse noch nicht bestätigt hat, bitte die Bestätigungs-Mail prüfen.";
-        trackLeadRequest();
-        contactForm.reset();
-      } catch (error) {
+    if (CONTACT_MODE === "formsubmit") {
+      if (window.location.protocol === "file:") {
+        event.preventDefault();
         formMessage.classList.add("error");
-        formMessage.textContent = error.message || "Es gab ein Problem beim Senden. Bitte versuche es über den Azure-Link erneut.";
-      } finally {
-        setSubmitButtonLoading(false);
+        formMessage.textContent = "Bitte teste das Formular über den Azure-Link. FormSubmit funktioniert nicht, wenn die HTML-Datei lokal geöffnet wird.";
+        return;
       }
 
+      if (formSubmitUrlField) formSubmitUrlField.value = window.location.href;
+
+      // Alte Fallback-Variante: normales HTML-POST an die im Formular hinterlegte Action.
+      // Kein fetch(), damit CORS/Failed-to-fetch nicht mehr entstehen kann.
+      trackLeadRequest();
       return;
     }
 
