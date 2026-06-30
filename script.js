@@ -453,6 +453,14 @@ function clearActiveTapFocus() {
   }
 }
 
+// Tap-/Fokuszustand mobiler Browser sauber lösen, damit keine alte Auswahloptik auf die nächste Frage springt.
+function clearActiveCheckFocus() {
+  const active = document.activeElement;
+  if (active && typeof active.blur === "function" && (active.classList && active.classList.contains("answer-button"))) {
+    active.blur();
+  }
+}
+
 // Aktuelle Frage anzeigen.
 function renderQuestion() {
   clearActiveTapFocus();
@@ -493,8 +501,11 @@ function renderQuestion() {
   `;
 
   questionArea.querySelectorAll(".answer-button").forEach((button) => {
+    button.classList.remove("is-selected");
     button.addEventListener("click", () => selectAnswer(button));
   });
+
+  window.setTimeout(clearActiveCheckFocus, 0);
 }
 
 function renderPartyWarning() {
@@ -530,8 +541,11 @@ function renderPartyWarning() {
   `;
 
   questionArea.querySelectorAll("[data-party-choice]").forEach((button) => {
+    button.classList.remove("is-selected");
     button.addEventListener("click", () => selectPartyWarning(button));
   });
+
+  window.setTimeout(clearActiveCheckFocus, 0);
 }
 
 const stepAnswerIds = ["life", "topic", "detail", "barrier", "channel"];
@@ -584,8 +598,10 @@ function selectAnswer(button) {
     questionArea.querySelectorAll(".answer-button").forEach((btn) => {
       btn.disabled = true;
     });
+    clearActiveCheckFocus();
 
     window.setTimeout(() => {
+      clearActiveCheckFocus();
       renderPartyWarning();
     }, 180);
     return;
@@ -599,8 +615,10 @@ function selectAnswer(button) {
   questionArea.querySelectorAll(".answer-button").forEach((btn) => {
     btn.disabled = true;
   });
+  clearActiveCheckFocus();
 
   window.setTimeout(() => {
+    clearActiveCheckFocus();
     currentStep += 1;
 
     if (currentStep < TOTAL_STEPS) {
@@ -618,8 +636,10 @@ function selectPartyWarning(button) {
   questionArea.querySelectorAll(".answer-button").forEach((btn) => {
     btn.disabled = true;
   });
+  clearActiveCheckFocus();
 
   window.setTimeout(() => {
+    clearActiveCheckFocus();
     if (choice === "unsure") {
       answers.life = "party_reconsidered";
       selectedLabels.life = "Party und Spaß → Bin doch unsicher";
