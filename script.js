@@ -351,7 +351,7 @@ function getCurrentQuestion() {
       hint: " ",
       answers: [
         { value: "no_pressure", icon: "🛑", title: "Ich will nichts aufgeschwatzt bekommen", micro: "Erst verstehen, dann entscheiden." },
-        { value: "no_understanding", icon: "💬", title: "Ehrlichkeit/Transparenz", micro: "Auch über Kleingedrucktes darf gesprochen werden." },
+        { value: "no_understanding", icon: "💬", title: "Ehrlichkeit und Transparenz", micro: "Auch über Kleingedrucktes darf gesprochen werden." },
         { value: "no_trust", icon: "🤝", title: "Keine versteckten Kosten", micro: "Vertrauen zählt." },
         { value: "postpone", icon: "⏳", title: "Erreichbarkeit", micro: "Dauerhafter Ansprechpartner." }
       ]
