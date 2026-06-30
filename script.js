@@ -700,7 +700,7 @@ function updateResultActions(type) {
   if (type === "party") {
     if (openContactButton) openContactButton.classList.add("is-hidden");
     if (restartButton) restartButton.textContent = "Seite verlassen";
-    if (trustRow) trustRow.classList.remove("is-hidden");
+    if (trustRow) trustRow.classList.add("is-hidden");
 
     if (!reconsiderButton) {
       reconsiderButton = document.createElement("button");
@@ -1021,6 +1021,13 @@ if (contactForm) {
     }
 
     if (CONTACT_MODE === "formsubmit") {
+      if (window.location.protocol === "file:") {
+        event.preventDefault();
+        formMessage.classList.add("error");
+        formMessage.textContent = "Bitte teste das Formular über den Azure-Link. FormSubmit funktioniert nicht, wenn die HTML-Datei lokal geöffnet wird.";
+        return;
+      }
+
       // Wichtig: Nicht per fetch senden und keine Demo-Meldung erzwingen.
       // Das Formular darf jetzt normal an FormSubmit abgeschickt werden.
       trackLeadRequest();
