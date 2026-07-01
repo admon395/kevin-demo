@@ -4005,7 +4005,7 @@ body {
     width: 100% !important;
     max-width: 100% !important;
     text-align: center !important;
-    font-size: clamp(14px, 3.75vw, 16px) !important;
+    font-size: clamp(15px, 3.95vw, 17px) !important;
     line-height: 1.18 !important;
     letter-spacing: -0.02em !important;
 
@@ -4065,7 +4065,7 @@ body {
 
   .check-stage .answer-text strong,
   .check-stage .answer-count-6 .answer-text strong {
-    font-size: clamp(13.6px, 3.6vw, 15px) !important;
+    font-size: clamp(14.4px, 3.85vw, 16px) !important;
     line-height: 1.18 !important;
 
     hyphens: none !important;
@@ -4110,7 +4110,7 @@ body {
 
   .check-stage .answer-text strong,
   .check-stage .answer-count-6 .answer-text strong {
-    font-size: 14px !important;
+    font-size: 14.5px !important;
     hyphens: none !important;
     -webkit-hyphens: none !important;
     -ms-hyphens: none !important;
