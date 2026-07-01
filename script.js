@@ -889,7 +889,7 @@ function getMindsetProfile(life, barrier) {
 
   const profiles = {
     plan_long: {
-      no_pressure: "Du willst nicht warten, bis ein Thema brennt. Gleichzeitig willst du nichts hören, was sich nach Verkauf anfühlt.",
+      no_pressure: "Du willst dich lieber vorher kümmern, bevor es stressig wird.. Gleichzeitig willst du nichts hören, was sich nach Verkauf anfühlt.",
       no_understanding: "Du willst früh genug wissen, woran du bist. Ohne Gerede, ohne Schönreden. Du willst wissen, was wirklich zu dir passt und was man sich sparen kann.",
       no_trust: "Du willst vorausdenken, aber nicht später über Kosten oder Bedingungen stolpern. Genau solche Details müssen vorher klar sein.",
       postpone: "Du denkst weiter als nur bis morgen. Du willst nicht irgendwann mit offenen Fragen allein dastehen."
@@ -898,16 +898,16 @@ function getMindsetProfile(life, barrier) {
       no_pressure: "Du willst erstmal Ordnung reinbringen. Nicht mit Druck, nicht mit Verkauf, sondern so, dass du danach klarer siehst.",
       no_understanding: "Du willst kein Fachgerede. Du willst verstehen, worum es wirklich geht und was davon für dich überhaupt wichtig ist.",
       no_trust: "Du willst sortieren, aber ohne komisches Bauchgefühl. Kosten, Bedingungen und Kleingedrucktes müssen klar sichtbar sein.",
-      postpone: "Du willst Überblick, ohne alles allein tragen zu müssen. Am Ende soll es einfacher sein als vorher."
+      postpone: "Du willst Überblick, ohne alles allein tragen zu müssen. Danach sollst du mehr Ruhe im Kopf haben als vorher."
     },
     plan_short: {
       no_pressure: "Du willst gerade keinen großen Lebensplan. Du willst wissen, was jetzt zählt und was erstmal egal sein kann.",
       no_understanding: "Du brauchst keine langen Erklärungen. Kurz, ehrlich und normal verständlich reicht völlig.",
       no_trust: "Du willst schnell verstehen, worum es geht. Aber bitte richtig, nicht halb. Gerade bei Kosten und Risiken muss man direkt ehrlich sein.",
-      postpone: "Du willst nicht alles zerdenken. Du willst einfach merken, ob gerade etwas Wichtiges offen ist oder nicht."
+      postpone: "Du willst nicht alles zerdenken. Du willst wissen, ob gerade wirklich etwas offen ist."
     },
     party_reconsidered: {
-      no_pressure: "Gut, dass du doch nochmal hinschaust. Das muss nicht heißen, dass du jetzt alles ernst und trocken planen willst.",
+      no_pressure: "Gut, dass du doch nochmal hinschaust. Das heißt nicht, dass du jetzt alles durchplanen musst.",
       no_understanding: "Wenn du schon hinschaust, dann bitte normal. Kein Finanztheater, keine Fachsprache, keine Show.",
       no_trust: "Du willst nicht erst hinterher merken, was es kostet oder bedeutet. Genau deshalb sollte es vorher verständlich sein.",
       postpone: "Du musst nicht alles sofort klären. Aber ganz egal scheint es dir eben doch nicht zu sein."
@@ -920,17 +920,17 @@ function getMindsetProfile(life, barrier) {
 function getTopicCore(topic, detail) {
   const fallback = {
     headline: "Du willst erstmal Klarheit.",
-    text: "Es muss nicht sofort eine Entscheidung entstehen. Erstmal sollte verständlich werden, welche Themen wirklich wichtig sind."
+    text: "Du musst nicht sofort etwas entscheiden. Erstmal sollte verständlich werden, welche Themen wirklich wichtig sind."
   };
 
   const detailTexts = {
     income_secure: {
       headline: "Dein Einkommen ist der Punkt.",
-      text: "Wenn Arbeit plötzlich nicht mehr geht, geht es nicht um Papier. Es geht um Miete, Alltag, Freiheit und darum, wie lange man ruhig bleiben kann."
+      text: "Wenn Arbeit plötzlich nicht mehr geht, geht es nicht um Papier. Es geht um Miete, Alltag, Freiheit und darum, wie lange du deine Kosten noch tragen kannst."
     },
     income_costs: {
       headline: "Du willst wissen, was wirklich passiert.",
-      text: "Nicht die Theorie ist spannend, sondern der Moment, in dem man Hilfe braucht. Dann zählen Unterlagen, Fristen, Nachweise und die Frage, ob man überhaupt weiß, was zu tun ist."
+      text: "Die Theorie hilft wenig, wenn man im Leistungsfall nicht weiß, was zu tun ist, sondern der Moment, in dem man Hilfe braucht. Dann zählen Unterlagen, Fristen, Nachweise und die Frage, ob man überhaupt weiß, was zu tun ist."
     },
     income_overview: {
       headline: "Du willst keine Bauchentscheidung.",
@@ -954,7 +954,7 @@ function getTopicCore(topic, detail) {
     },
     family_partner: {
       headline: "Du denkst nicht nur an dich.",
-      text: "Wenn ein Partner mit dranhängt, wird Geld persönlicher. Dann geht es nicht nur um Zahlen, sondern darum, dass niemand allein das Risiko tragen muss."
+      text: "Wenn ein Partner mit betroffen ist, wird Geld persönlicher. Dann geht es nicht nur um Zahlen, sondern darum, dass niemand allein das Risiko tragen muss."
     },
     family_kids: {
       headline: "Mit Kindern wird Geld schnell persönlicher.",
@@ -962,7 +962,7 @@ function getTopicCore(topic, detail) {
     },
     family_calm: {
       headline: "Du willst Ruhe für deine Familie.",
-      text: "Oft merkt man erst bei Problemen, wie viel zuhause am Einkommen hängt. Wenn es wegfällt, soll nicht direkt alles andere mit wackeln."
+      text: "Oft merkt man erst bei Problemen, wie viel zuhause am Einkommen hängt. Wenn es wegfällt, soll nicht sofort alles andere kippen."
     },
     family_unsure: {
       headline: "Du willst Ordnung in Familienthemen.",
@@ -970,10 +970,10 @@ function getTopicCore(topic, detail) {
     },
     estate_buy: {
       headline: "Eigentum hört nach dem Kauf nicht auf.",
-      text: "Bei Eigentum geht es nicht nur um Kaufpreis und Rate. Wichtig sind Finanzierung, Rücklagen, Absicherung und die Frage, ob die Belastung auch passt, wenn etwas teurer wird oder Einkommen wegfällt."
+      text: "Bei Eigentum geht es nicht nur um Kaufpreis und Rate. Wichtig sind Finanzierung, Rücklagen, Absicherung und die Frage, ob die Belastung noch passt, wenn etwas teurer wird oder Einkommen wegfällt."
     },
     estate_finance: {
-      headline: "Vermietete Immobilien können spannend sein.",
+      headline: "Vermietete Immobilien können interessant sein.",
       text: "Bei vermieteten Wohnungen zählen Mieteinnahmen, Verwaltung, Bank, Rücklagen und Kosten. Spannend wird es erst, wenn Miete, Kosten, Rücklagen und Finanzierung auch ohne Schönrechnen zusammenpassen."
     },
     estate_existing: {
@@ -990,15 +990,15 @@ function getTopicCore(topic, detail) {
     },
     business_income: {
       headline: "Du denkst auch an die Menschen im Betrieb.",
-      text: "Mitarbeitervorteile sind nicht nur Extras. Sie können helfen, gute Leute zu halten und zu zeigen, dass sie dir wichtig sind."
+      text: "Mitarbeitervorteile sind nicht nur Extras. Sie zeigen deine Fürsorge und dass dir gute Mitarbeiter wichtig sind."
     },
     business_responsibility: {
       headline: "Du willst nicht alles einfach weiterlaufen lassen.",
-      text: "Bestehende Versicherungen können passen, zu teuer sein oder Lücken haben. Dann sieht man schnell, was bleiben kann und was weg sollte."
+      text: "Bestehende Versicherungen können passen, zu teuer sein oder Lücken haben. Dann sieht man schnell, was geändert werden sollte."
     },
     business_unsure: {
       headline: "Am Anfang braucht es keinen perfekten Plan.",
-      text: "In der Gründungsphase zählt Überblick. Was ist wirklich wichtig, was kann warten und wo solltest du nicht einfach drauflosmachen?"
+      text: "In der Gründungsphase zählt Überblick. Was ist wirklich wichtig, was kann warten und wo du nicht einfach drauflosmachen solltest."
     },
     clarity_structure: {
       headline: "Vielleicht liegt der erste Schritt näher, als du denkst.",
@@ -1006,14 +1006,14 @@ function getTopicCore(topic, detail) {
     },
     clarity_language: {
       headline: "Du willst endlich verstehen, worum es geht.",
-      text: "Bei dir geht es wahrscheinlich nicht um eine bestimmte Lösung. Es geht darum, dass du endlich verstehst, worum es geht."
+      text: "Bei dir geht es wahrscheinlich nicht um eine bestimmte Lösung. Es geht darum, dass Finanzthemen endlich verständlich werden."
     },
     clarity_priority: {
       headline: "Klarheit beginnt oft beim Geldfluss.",
       text: "Bevor man über Absicherung oder Anlage spricht, kann eine einfache Frage wichtiger sein: Wo geht dein Geld hin und was bleibt wirklich übrig?"
     },
     clarity_calm: {
-      headline: "Manchmal hilft ein Blick von außen.",
+      headline: "Manchmal hilft es, wenn jemand von außen mit draufschaut.",
       text: "Nicht jede Frage braucht sofort eine Lösung. Manchmal reicht es, wenn jemand ruhig mit draufschaut und aus dem Durcheinander eine klare Reihenfolge macht."
     }
   };
