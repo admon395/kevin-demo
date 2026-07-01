@@ -863,76 +863,203 @@ function getResultHtml(type) {
     `;
   }
 
-  const barrierText = getBarrierHtml(answers.barrier);
-  const commonEnd = `
-    <p>
-      Wenn du möchtest, sortiere ich das mit dir ruhig im Erstgespräch.
-    </p>
-  `;
-
-  const texts = {
-    moment: `
-      <p class="result-tagline">Du willst leben, nicht alles zerdenken.</p>
-      <p>Das ist völlig okay. Ein kurzer Blick kann trotzdem helfen, damit wichtige Themen nicht irgendwann plötzlich Druck machen.</p>
-      ${barrierText}
-      ${commonEnd}
-    `,
-    security: `
-      <p class="result-tagline">Bei dir geht es eher um Ruhe als um Panik.</p>
-      <p>Du willst wahrscheinlich wissen, ob die wichtigsten Dinge grundsätzlich sortiert sind und wo noch offene Fragen liegen.</p>
-      ${barrierText}
-      ${commonEnd}
-    `,
-    future: `
-      <p class="result-tagline">Du denkst weiter als nur bis zum nächsten Monat.</p>
-      <p>Dir ist wichtig, später nicht das Gefühl zu haben, zu spät angefangen zu haben. Genau dafür ist ein ruhiger Überblick sinnvoll.</p>
-      ${barrierText}
-      ${commonEnd}
-    `,
-    family: `
-      <p class="result-tagline">Bei dir geht es wahrscheinlich nicht nur um dich.</p>
-      <p>Wenn Partner, Kinder oder Familie im Kopf sind, fühlt sich Verantwortung anders an. Erstmal reicht es, ruhig hinzuschauen.</p>
-      ${barrierText}
-      ${commonEnd}
-    `,
-    income: `
-      <p class="result-tagline">Dein Einkommen trägt mehr als nur Rechnungen.</p>
-      <p>Es geht um Alltag, Freiheit und Stabilität. Sinnvoll ist ein klarer Blick darauf, was trägt und wo Fragen offen sind.</p>
-      ${barrierText}
-      ${commonEnd}
-    `,
-    business: `
-      <p class="result-tagline">Du trägst Verantwortung und nicht alles muss in deinem Kopf bleiben.</p>
-      <p>Gewerbe oder Selbstständigkeit bringen Freiheit, aber auch offene Fragen. Ein erster Überblick kann viel Druck rausnehmen.</p>
-      ${barrierText}
-      ${commonEnd}
-    `,
-    real_estate: `
-      <p class="result-tagline">Bei dir geht es um etwas Großes.</p>
-      <p>Immobilie, Finanzierung oder Eigentum sind keine Kleinigkeiten. Genau deshalb hilft es, zuerst sauber zu sortieren, was zu deiner Situation passt.</p>
-      ${barrierText}
-      ${commonEnd}
-    `,
-    clarity: `
-      <p class="result-tagline">Du musst noch keinen fertigen Plan haben.</p>
-      <p>Vielleicht brauchst du gerade nicht noch mehr Informationen, sondern eine klare Reihenfolge: Was ist wichtig, was kann warten?</p>
-      ${barrierText}
-      ${commonEnd}
-    `
-  };
-
-  return texts[type] || texts.clarity;
+  return getPersonalResultHtml(type);
 }
 
-function getBarrierHtml(barrier) {
-  const texts = {
-    no_pressure: "Verständlich: Es geht erstmal ums Sortieren, nicht ums Aufschwatzen.",
-    no_understanding: "Dann sollte es vor allem einfach erklärt werden, ohne Fachchinesisch.",
-    no_trust: "Vertrauen entsteht durch ruhige Erklärung, nicht durch große Versprechen.",
-    postpone: "Das passiert vielen: Oft wirkt das Thema einfach zu groß und unübersichtlich."
+function getPersonalResultHtml(type) {
+  const topic = answers.topic || "unknown";
+  const detail = answers.detail || "";
+  const life = answers.life || "";
+  const barrier = answers.barrier || "";
+  const channel = answers.channel || "";
+
+  const result = getDetailResult(topic, detail, type);
+  const lifeSentence = getLifeSentence(life);
+  const barrierSentence = getBarrierSentence(barrier);
+  const channelSentence = getChannelSentence(channel);
+  const reflection = [lifeSentence, barrierSentence].filter(Boolean).join(" ");
+
+  return [
+    `<p class="result-tagline">${result.headline}</p>`,
+    `<p>${result.text}</p>`,
+    reflection ? `<p>${reflection}</p>` : "",
+    channelSentence ? `<p>${channelSentence}</p>` : ""
+  ].filter(Boolean).join("\n");
+}
+
+function getDetailResult(topic, detail, type) {
+  const detailTexts = {
+    income_secure: {
+      headline: "Dein Einkommen ist mehr als eine Zahl.",
+      text: "Wenn du dich fragst, was bei Krankheit oder Ausfall passiert, geht es nicht um Angst. Es geht um Alltag, Miete, Freiheit und darum, nicht plötzlich allein dazustehen."
+    },
+    income_costs: {
+      headline: "Du willst wissen, was im Ernstfall wirklich passiert.",
+      text: "Gerade beim Leistungsfall zählt mehr als das reine Vorhandensein. Wichtig ist, wie es funktioniert, was erwartet wird und ob du im Zweifel wirklich durchblickst."
+    },
+    income_overview: {
+      headline: "Du willst keine Bauchentscheidung bei Berufsunfähigkeit.",
+      text: "Das Thema wirkt schnell groß und teuer. Sinnvoll ist erstmal ein klarer Blick darauf, ob es für dich relevant ist und welche Fragen wirklich offen sind."
+    },
+    income_unsure: {
+      headline: "Du spürst, dass das Thema wichtig sein könnte.",
+      text: "Du musst es noch nicht genau benennen können. Wenn Einkommen, Gesundheit und Alltag zusammenhängen, lohnt sich ein ruhiges Sortieren."
+    },
+    retirement_enough: {
+      headline: "Du willst später wirklich klarkommen.",
+      text: "Wenn Altersarmut ein Gedanke ist, geht es nicht um Panik. Es geht darum, heute zu verstehen, ob dein späteres Leben realistisch zu deinen Wünschen passt."
+    },
+    retirement_start: {
+      headline: "Du willst Zeit nicht erst genießen, wenn es zu spät ist.",
+      text: "Nicht bis 70 arbeiten zu müssen ist kein Luxusgedanke. Es ist ein Zeichen dafür, dass du wissen willst, welche Möglichkeiten du dir offenhalten kannst."
+    },
+    retirement_lifestyle: {
+      headline: "Du willst wissen, was mit deinem Geld möglich ist.",
+      text: "ETF, Fonds, Immobilien oder andere Ideen bringen wenig, wenn vorher keine Ordnung da ist. Erst schauen wir auf dein Ziel, dann auf passende Wege."
+    },
+    family_partner: {
+      headline: "Bei dir hängt Verantwortung auch an anderen Menschen.",
+      text: "Wenn ein Partner mit im Blick ist, wird Finanzplanung persönlicher. Dann geht es um Sicherheit im gemeinsamen Alltag und klare Absprachen."
+    },
+    family_kids: {
+      headline: "Wenn Kinder im Spiel sind, fühlt sich Zukunft anders an.",
+      text: "Man denkt nicht mehr nur an sich selbst. Genau deshalb ist es sinnvoll, ruhig zu sortieren, was wirklich wichtig ist und was warten kann."
+    },
+    family_calm: {
+      headline: "Du willst wissen, ob deine Familie ruhig schlafen kann.",
+      text: "Einkommen, Krankheit und Verantwortung hängen oft enger zusammen, als man im Alltag merkt. Ein Überblick nimmt hier meistens mehr Druck raus, als man denkt."
+    },
+    family_unsure: {
+      headline: "Du willst erstmal Ordnung in ein großes Thema bringen.",
+      text: "Familie, Geld und Absicherung können schnell durcheinandergehen. Du brauchst zuerst keine fertige Lösung. Eine klare Reihenfolge reicht für den Anfang."
+    },
+    estate_buy: {
+      headline: "Eigentum ist eine große Entscheidung.",
+      text: "Wenn du über ein eigenes Zuhause nachdenkst, sollte mehr als die Rate passen. Wichtig ist, dass Finanzierung, Risiko und dein Leben zusammenpassen."
+    },
+    estate_finance: {
+      headline: "Du willst wissen, ob Kapitalanlage wirklich Sinn ergibt.",
+      text: "Eine Immobilie als Anlage klingt oft stark, kann aber auch Druck machen. Wir schauen zuerst, ob die Idee zu deiner Situation passt."
+    },
+    estate_existing: {
+      headline: "Finanzierung braucht Klarheit und verständliche Zahlen.",
+      text: "Bei Darlehen, Laufzeiten und Absicherung verliert man schnell den Überblick. Sinnvoll ist, die Struktur einmal ruhig auf den Tisch zu legen."
+    },
+    estate_unsure: {
+      headline: "Du willst erstmal verstehen, wo du stehst.",
+      text: "Immobilien wirken schnell groß und endgültig. Genau deshalb ist ein erster Überblick besser als eine schnelle Entscheidung."
+    },
+    business_risk: {
+      headline: "Du willst Risiken nicht einfach im Kopf behalten.",
+      text: "Als Selbstständiger oder Unternehmer trägt man oft mehr, als man merkt. Ein Überblick hilft, Verantwortung zu sortieren, ohne alles schwerer zu machen."
+    },
+    business_income: {
+      headline: "Du denkst auch an die Menschen in deinem Betrieb.",
+      text: "Mitarbeitervorteile und Absicherung können zeigen, dass Verantwortung ernst gemeint ist. Gerade im Betrieb zählt, ob Menschen sich gesehen fühlen."
+    },
+    business_responsibility: {
+      headline: "Du willst wissen, ob Bestehendes noch passt.",
+      text: "Versicherungen oder Verträge laufen oft jahrelang mit. Manchmal reicht ein sauberer Vergleich, um zu erkennen, was gut ist und was nicht mehr passt."
+    },
+    business_unsure: {
+      headline: "In der Gründungsphase muss nicht alles perfekt sein.",
+      text: "Gerade am Anfang ist es normal, viele offene Fragen zu haben. Wichtig ist, die größten Risiken und nächsten Schritte klar zu sortieren."
+    },
+    clarity_structure: {
+      headline: "Du willst wissen, welche Vorteile du vielleicht liegen lässt.",
+      text: "Arbeitgeberzuschüsse, vermögenswirksame Leistungen oder kleine Bausteine wirken unscheinbar. Gerade deshalb lohnt sich ein Blick, was bei dir schon möglich ist."
+    },
+    clarity_language: {
+      headline: "Du willst es endlich normal erklärt bekommen.",
+      text: "Wenn Finanzthemen nach Fachchinesisch klingen, schaltet man irgendwann ab. Ich sortiere das mit dir so, dass du wirklich verstehst, worum es geht."
+    },
+    clarity_priority: {
+      headline: "Du willst wissen, wo dein Geld eigentlich hingeht.",
+      text: "Fixkosten, Alltag und Sparen hängen zusammen. Manchmal beginnt Klarheit mit einem ehrlichen Blick auf die eigene Struktur."
+    },
+    clarity_calm: {
+      headline: "Du bist offen für einen neuen Blick.",
+      text: "Vielleicht fehlt dir ein Impuls von außen. Manchmal reicht ein gutes Gespräch, um Dinge anders zu sehen."
+    }
   };
 
-  return texts[barrier] ? `<p>${texts[barrier]}</p>` : "";
+  const topicFallbacks = {
+    income: {
+      headline: "Dein Einkommen trägt mehr als nur Rechnungen.",
+      text: "Es geht um Stabilität, Freiheit und die Frage, was passiert, wenn plötzlich etwas nicht mehr läuft wie geplant."
+    },
+    retirement: {
+      headline: "Du denkst weiter als bis zum nächsten Monat.",
+      text: "Dir ist wichtig, später nicht das Gefühl zu haben, zu spät angefangen zu haben. Genau dafür braucht es zuerst einen klaren Überblick."
+    },
+    family: {
+      headline: "Bei dir geht es wahrscheinlich auch um andere Menschen.",
+      text: "Wenn andere Menschen mit an deiner Sicherheit hängen, fühlt sich Verantwortung anders an. Erstmal reicht es, ruhig hinzuschauen."
+    },
+    real_estate: {
+      headline: "Bei dir geht es um etwas Großes.",
+      text: "Immobilie, Finanzierung oder Eigentum sind keine Kleinigkeiten. Darum sollte zuerst klar sein, was wirklich zu deiner Situation passt."
+    },
+    business: {
+      headline: "Du trägst Verantwortung und nicht alles muss in deinem Kopf bleiben.",
+      text: "Gewerbe oder Selbstständigkeit bringen Freiheit, aber auch offene Fragen. Ein erster Überblick kann viel Druck rausnehmen."
+    },
+    unknown: {
+      headline: "Du musst noch keinen fertigen Plan haben.",
+      text: "Vielleicht brauchst du gerade vor allem eine klare Reihenfolge. Was ist wichtig, was kann warten?"
+    }
+  };
+
+  const typeFallbacks = {
+    moment: {
+      headline: "Du willst leben, ohne alles zu zerdenken.",
+      text: "Das ist okay. Ein kurzer Blick kann trotzdem helfen, damit wichtige Themen später nicht plötzlich Druck machen."
+    },
+    security: {
+      headline: "Bei dir geht es eher um Ruhe als um Panik.",
+      text: "Du willst wahrscheinlich wissen, ob die wichtigsten Dinge grundsätzlich sortiert sind und wo noch offene Fragen liegen."
+    },
+    future: topicFallbacks.retirement,
+    family: topicFallbacks.family,
+    income: topicFallbacks.income,
+    business: topicFallbacks.business,
+    real_estate: topicFallbacks.real_estate,
+    clarity: topicFallbacks.unknown
+  };
+
+  return detailTexts[detail] || topicFallbacks[topic] || typeFallbacks[type] || topicFallbacks.unknown;
+}
+
+function getLifeSentence(life) {
+  const texts = {
+    plan_long: "Du schaust weiter als auf heute. Dir ist wichtig, dass später nicht alles vom Zufall abhängt.",
+    plan_mid: "Du willst keine Dramatik. Du willst endlich Ordnung in die Themen bringen.",
+    plan_short: "Du willst erstmal wissen, was jetzt wirklich zählt. Genau dafür ist ein ruhiger Blick sinnvoll.",
+    party_reconsidered: "Gut, dass du doch nochmal hinschaust. Man muss nicht spießig werden, nur weil man Zukunft ernst nimmt."
+  };
+
+  return texts[life] || "Du musst noch keinen fertigen Plan haben. Es reicht, wenn wir erstmal sortieren.";
+}
+
+function getBarrierSentence(barrier) {
+  const texts = {
+    no_pressure: "Wichtig: Es geht erstmal ums Sortieren, nicht darum, dir etwas aufzuschwatzen.",
+    no_understanding: "Ich erkläre dir die Dinge so, dass du sie wirklich greifen kannst.",
+    no_trust: "Kosten, Bedingungen und Nachteile gehören offen auf den Tisch.",
+    postpone: "Wenn du später Fragen hast, sollst du nicht wieder bei null anfangen."
+  };
+
+  return texts[barrier] || "";
+}
+
+function getChannelSentence(channel) {
+  const texts = {
+    online: "Online können wir das flexibel und ohne Stress durchgehen.",
+    phone: "Am Telefon lässt sich schnell klären, worum es wirklich geht.",
+    local: "Wenn es vor Ort passt, können wir das persönlich und in Ruhe sortieren."
+  };
+
+  return texts[channel] || "Wenn du möchtest, schaue ich mir das mit dir in Ruhe an.";
 }
 
 // Versteckte Formularfelder mit den Funnel-Antworten befüllen.
