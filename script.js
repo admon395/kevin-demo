@@ -902,7 +902,7 @@ function getMindsetProfile(life, barrier) {
       postpone: "Du willst Überblick, aber nicht alles allein im Kopf behalten. Es soll jemand da sein, der später noch weiß, worum es ging."
     },
     plan_short: {
-      no_pressure: "Bei dir geht es nicht um den großen Lebensplan. Du willst erstmal wissen, was jetzt wichtig ist – und was man entspannt liegen lassen kann.",
+      no_pressure: "Bei dir geht es nicht um den großen Lebensplan. Du willst erstmal wissen, was jetzt wichtig ist und was man entspannt liegen lassen kann.",
       no_understanding: "Du brauchst keine langen Erklärungen. Du willst kurz, ehrlich und normal verständlich wissen, worum es wirklich geht.",
       no_trust: "Wenn du dich kurzfristig mit dem Thema beschäftigst, darf es nicht schwammig werden. Du willst wissen, welche Kosten und Risiken wirklich dahinterstehen.",
       postpone: "Du willst nicht alles zerdenken, aber auch nicht allein gelassen werden. Erstmal soll klar werden, welcher nächste Schritt überhaupt Sinn macht."
@@ -1026,7 +1026,7 @@ function getClosingText(barrier) {
   const fallback = "Ich würde erstmal ruhig sortieren, was wirklich wichtig ist.";
 
   const texts = {
-    no_pressure: "Ich würde das erstmal ruhig sortieren – ohne Druck und ohne Verkaufsgefühl.",
+    no_pressure: "Ich würde das erstmal ruhig sortieren, ohne Druck und ohne Verkaufsgefühl.",
     no_understanding: "Ich würde dir dabei klar sagen, was passt, was nicht passt und wo man vorsichtig sein sollte.",
     no_trust: "Ich würde besonders auf Kosten, Bedingungen und mögliche Überraschungen achten.",
     postpone: "Ich würde es so aufbauen, dass du später wieder daran anknüpfen kannst."
