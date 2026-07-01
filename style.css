@@ -3963,10 +3963,11 @@ body {
   }
 }
 /* =========================================================
-   FINALER MANUELLER CHECK-BUTTON-FIX MOBIL
+   FINALER MANUELLER CHECK-BUTTON-FIX MOBIL - FEINSCHLIFF
    ---------------------------------------------------------
    Mobil: Titel oben, Icon mittig, Erklärung darunter.
-   Keine Icon-Spalte links mehr.
+   Keine Icon-Spalte links.
+   Keine hässliche automatische Worttrennung.
    Desktop bleibt unverändert.
    ========================================================= */
 
@@ -3975,7 +3976,7 @@ body {
   .check-stage .answer-count-6 .answers-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     align-content: start !important;
-    gap: 8px !important;
+    gap: 9px !important;
   }
 
   .check-stage .answer-button,
@@ -3986,9 +3987,9 @@ body {
     align-content: start !important;
     justify-items: center !important;
     text-align: center !important;
-    min-height: 118px !important;
-    padding: 12px 10px !important;
-    gap: 7px !important;
+    min-height: 128px !important;
+    padding: 14px 10px !important;
+    gap: 8px !important;
     border-radius: 18px !important;
   }
 
@@ -4004,12 +4005,17 @@ body {
     width: 100% !important;
     max-width: 100% !important;
     text-align: center !important;
-    font-size: clamp(13px, 3.6vw, 15px) !important;
-    line-height: 1.16 !important;
+    font-size: clamp(14px, 3.75vw, 16px) !important;
+    line-height: 1.18 !important;
     letter-spacing: -0.02em !important;
-    overflow-wrap: break-word !important;
+
+    /* Wichtig: keine hässliche Silbentrennung */
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
     word-break: normal !important;
-    hyphens: auto !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
   }
 
   .answer-emoji,
@@ -4018,10 +4024,10 @@ body {
     grid-row: 2 !important;
     justify-self: center !important;
     align-self: center !important;
-    width: 32px !important;
-    height: 32px !important;
+    width: 34px !important;
+    height: 34px !important;
     border-radius: 13px !important;
-    font-size: 16px !important;
+    font-size: 17px !important;
     margin: 0 auto !important;
   }
 
@@ -4033,10 +4039,15 @@ body {
     width: 100% !important;
     max-width: 100% !important;
     text-align: center !important;
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-    overflow-wrap: break-word !important;
+    font-size: 11.2px !important;
+    line-height: 1.24 !important;
+
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
     word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
   }
 
   .check-stage .answer-arrow {
@@ -4047,26 +4058,40 @@ body {
 @media (max-width: 430px) {
   .check-stage .answer-button,
   .check-stage .answer-count-6 .answer-button {
-    min-height: 116px !important;
-    padding: 11px 8px !important;
-    gap: 6px !important;
+    min-height: 126px !important;
+    padding: 13px 8px !important;
+    gap: 7px !important;
   }
 
   .check-stage .answer-text strong,
   .check-stage .answer-count-6 .answer-text strong {
-    font-size: clamp(12.5px, 3.45vw, 14px) !important;
+    font-size: clamp(13.6px, 3.6vw, 15px) !important;
+    line-height: 1.18 !important;
+
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 
   .check-stage .answer-text small,
   .check-stage .answer-count-6 .answer-text small {
-    font-size: 10.7px !important;
+    font-size: 10.9px !important;
+    line-height: 1.22 !important;
+
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 
   .answer-emoji,
   .check-stage .answer-count-6 .answer-emoji {
-    width: 30px !important;
-    height: 30px !important;
-    font-size: 15px !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 16px !important;
   }
 }
 
@@ -4079,8 +4104,18 @@ body {
   .check-stage .answer-button,
   .check-stage .answer-count-6 .answer-button {
     grid-template-columns: 1fr !important;
-    min-height: 92px !important;
-    padding: 10px !important;
+    min-height: 104px !important;
+    padding: 12px 10px !important;
+  }
+
+  .check-stage .answer-text strong,
+  .check-stage .answer-count-6 .answer-text strong {
+    font-size: 14px !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 }
 
@@ -4092,12 +4127,27 @@ body {
   .check-stage .answer-button,
   .check-stage .answer-count-6 .answer-button {
     grid-template-columns: 1fr !important;
-    min-height: 96px !important;
-    padding: 9px 8px !important;
+    min-height: 108px !important;
+    padding: 10px 8px !important;
+    gap: 6px !important;
+  }
+
+  .check-stage .answer-text strong,
+  .check-stage .answer-count-6 .answer-text strong {
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 
   .check-stage .answer-text small,
   .check-stage .answer-count-6 .answer-text small {
     display: block !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 }
