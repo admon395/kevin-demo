@@ -3962,3 +3962,142 @@ body {
     max-width: min(178px, calc(100vw - 82px));
   }
 }
+/* =========================================================
+   FINALER MANUELLER CHECK-BUTTON-FIX MOBIL
+   ---------------------------------------------------------
+   Mobil: Titel oben, Icon mittig, Erklärung darunter.
+   Keine Icon-Spalte links mehr.
+   Desktop bleibt unverändert.
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .check-stage .answers-grid,
+  .check-stage .answer-count-6 .answers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-content: start !important;
+    gap: 8px !important;
+  }
+
+  .check-stage .answer-button,
+  .check-stage .answer-count-6 .answer-button {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    align-content: start !important;
+    justify-items: center !important;
+    text-align: center !important;
+    min-height: 118px !important;
+    padding: 12px 10px !important;
+    gap: 7px !important;
+    border-radius: 18px !important;
+  }
+
+  .check-stage .answer-text,
+  .check-stage .answer-count-6 .answer-text {
+    display: contents !important;
+  }
+
+  .check-stage .answer-text strong,
+  .check-stage .answer-count-6 .answer-text strong {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    font-size: clamp(13px, 3.6vw, 15px) !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.02em !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    hyphens: auto !important;
+  }
+
+  .answer-emoji,
+  .check-stage .answer-count-6 .answer-emoji {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    justify-self: center !important;
+    align-self: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 13px !important;
+    font-size: 16px !important;
+    margin: 0 auto !important;
+  }
+
+  .check-stage .answer-text small,
+  .check-stage .answer-count-6 .answer-text small {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .check-stage .answer-arrow {
+    display: none !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .check-stage .answer-button,
+  .check-stage .answer-count-6 .answer-button {
+    min-height: 116px !important;
+    padding: 11px 8px !important;
+    gap: 6px !important;
+  }
+
+  .check-stage .answer-text strong,
+  .check-stage .answer-count-6 .answer-text strong {
+    font-size: clamp(12.5px, 3.45vw, 14px) !important;
+  }
+
+  .check-stage .answer-text small,
+  .check-stage .answer-count-6 .answer-text small {
+    font-size: 10.7px !important;
+  }
+
+  .answer-emoji,
+  .check-stage .answer-count-6 .answer-emoji {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 359px) {
+  .check-stage .answers-grid,
+  .check-stage .answer-count-6 .answers-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .check-stage .answer-button,
+  .check-stage .answer-count-6 .answer-button {
+    grid-template-columns: 1fr !important;
+    min-height: 92px !important;
+    padding: 10px !important;
+  }
+}
+
+@media (max-height: 610px) and (max-width: 640px) {
+  .check-stage .question-area {
+    overflow-y: auto !important;
+  }
+
+  .check-stage .answer-button,
+  .check-stage .answer-count-6 .answer-button {
+    grid-template-columns: 1fr !important;
+    min-height: 96px !important;
+    padding: 9px 8px !important;
+  }
+
+  .check-stage .answer-text small,
+  .check-stage .answer-count-6 .answer-text small {
+    display: block !important;
+  }
+}
