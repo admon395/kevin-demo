@@ -889,7 +889,7 @@ function getMindsetProfile(life, barrier) {
 
   const profiles = {
     plan_long: {
-      no_pressure: "Du willst dich lieber vorher kümmern, bevor es stressig wird.. Gleichzeitig willst du nichts hören, was sich nach Verkauf anfühlt.",
+      no_pressure: "Du willst dich lieber vorher kümmern, bevor es stressig wird. Gleichzeitig willst du nichts hören, was sich nach Verkauf anfühlt.",
       no_understanding: "Du willst früh genug wissen, woran du bist. Ohne Gerede, ohne Schönreden. Du willst wissen, was wirklich zu dir passt und was man sich sparen kann.",
       no_trust: "Du willst vorausdenken, aber nicht später über Kosten oder Bedingungen stolpern. Genau solche Details müssen vorher klar sein.",
       postpone: "Du denkst weiter als nur bis morgen. Du willst nicht irgendwann mit offenen Fragen allein dastehen."
@@ -930,7 +930,7 @@ function getTopicCore(topic, detail) {
     },
     income_costs: {
       headline: "Du willst wissen, was wirklich passiert.",
-      text: "Die Theorie hilft wenig, wenn man im Leistungsfall nicht weiß, was zu tun ist, sondern der Moment, in dem man Hilfe braucht. Dann zählen Unterlagen, Fristen, Nachweise und die Frage, ob man überhaupt weiß, was zu tun ist."
+      text: "Im Leistungsfall hilft Theorie wenig. Dann zählen Unterlagen, Fristen, Nachweise und die Frage, ob du weißt, was zu tun ist. Dann zählen Unterlagen, Fristen, Nachweise und die Frage, ob man überhaupt weiß, was zu tun ist."
     },
     income_overview: {
       headline: "Du willst keine Bauchentscheidung.",
@@ -974,7 +974,7 @@ function getTopicCore(topic, detail) {
     },
     estate_finance: {
       headline: "Vermietete Immobilien können interessant sein.",
-      text: "Bei vermieteten Wohnungen zählen Mieteinnahmen, Verwaltung, Bank, Rücklagen und Kosten. Spannend wird es erst, wenn Miete, Kosten, Rücklagen und Finanzierung auch ohne Schönrechnen zusammenpassen."
+      text: "Bei vermieteten Wohnungen zählen Mieteinnahmen, Verwaltung, Bank, Rücklagen und Kosten. Wichtig ist, dass Miete, Kosten, Rücklagen und Finanzierung auch ohne Schönrechnen zusammenpassen."
     },
     estate_existing: {
       headline: "Finanzierung muss zu dir passen.",
@@ -1013,7 +1013,7 @@ function getTopicCore(topic, detail) {
       text: "Bevor man über Absicherung oder Anlage spricht, kann eine einfache Frage wichtiger sein: Wo geht dein Geld hin und was bleibt wirklich übrig?"
     },
     clarity_calm: {
-      headline: "Manchmal hilft es, wenn jemand von außen mit draufschaut.",
+      headline: "Manchmal hilft kurz Ordnung.",
       text: "Nicht jede Frage braucht sofort eine Lösung. Manchmal reicht es, wenn jemand ruhig mit draufschaut und aus dem Durcheinander eine klare Reihenfolge macht."
     }
   };
