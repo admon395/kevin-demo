@@ -314,9 +314,9 @@ function getCurrentQuestion() {
       question: "Worauf legst du gerade Wert?",
       hint: "Wähle nach Gefühl!",
       answers: [
-        { value: "plan_long", icon: "🌱", title: "Langfristige Planung", micro: "Zukunft ist mir wichtig." },
-        { value: "plan_mid", icon: "🧭", title: "Mittelfristige Planung", micro: "Ich will Dinge sauber sortieren." },
-        { value: "plan_short", icon: "⚡", title: "Kurzfristige Planung", micro: "Erstmal das, was jetzt zählt." },
+        { value: "plan_long", icon: "🌱", title: "Langfristige Planung", micro: "Zeitraum: 10-30 Jahre" },
+        { value: "plan_mid", icon: "🧭", title: "Mittelfristige Planung", micro: "Zeitraum: 1-10 Jahre" },
+        { value: "plan_short", icon: "⚡", title: "Kurzfristige Planung", micro: "Zeitraum: 1-12 Monate" },
         { value: "live_now", icon: "🌊", title: "Party und Spaß", micro: "Zukunftsplanung ist mir egal." }
       ]
     };
